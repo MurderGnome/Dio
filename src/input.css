@@ -1,3 +1,73 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@tailwind screens;
+@keyframes swirl {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.swirling-gradient {
+    position: relative;
+    overflow: hidden;
+}
+
+.swirling-gradient::before {
+    content: '';
+    position: absolute;
+    top: -100%; 
+    left: -100%;
+    right: -100%;
+    bottom: -100%;
+    background: linear-gradient(270deg, 
+#804ea2, 
+#3c31dd, 
+#45fcde);
+    animation: swirl 15s linear infinite;
+    transform-origin: center;
+    z-index: 1;
+}
+
+
+.bg-transition-hero {
+    background: linear-gradient(to bottom, 
+#312e81, 
+#413c9a);
+}
+
+.bg-transition-about {
+    background: linear-gradient(to bottom, 
+#413c9a, 
+#514ab3);
+}
+
+.bg-transition-team {
+    background: linear-gradient(to bottom, 
+#514ab3, 
+#6158cc);
+}
+
+.bg-transition-services {
+    background: linear-gradient(to bottom, 
+#6158cc, 
+#7166e5);
+}
+
+.bg-transition-mission {
+    background: linear-gradient(to bottom, 
+#7166e5, 
+#8174fe);
+}
+
+.bg-transition-contact {
+    background: linear-gradient(to bottom, 
+#8174fe, 
+#9182ff);
+}
+
+
+

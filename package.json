@@ -12,9 +12,14 @@
   "author": "Your Name",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
+    "@live-codes/tailwindcss-browser-plugin": "^0.3.2",
     "@types/node": "^18.0.6",
-    "node-fetch": "^3.2.6"
+    "autoprefixer": "^10.4.16",
+    "express": "^4.17.1",
+    "jquery": "^3.7.1",
+    "node-fetch": "^3.2.6",
+    "postcss": "^8.4.32",
+    "tailgrids": "^2.1.0"
   },
   "devDependencies": {
     "tailwindcss": "^3.3.5"
