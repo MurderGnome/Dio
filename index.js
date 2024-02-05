@@ -8,7 +8,7 @@ app.use(express.static('dist'));
 
 // Serve main HTML file
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/index.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.listen(port, () => {

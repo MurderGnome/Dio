@@ -9,7 +9,7 @@
     "build": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
   },
   "keywords": [],
-  "author": "Your Name",
+  "author": "Ramsden",
   "license": "ISC",
   "dependencies": {
     "@live-codes/tailwindcss-browser-plugin": "^0.3.2",
