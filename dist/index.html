@@ -6,16 +6,17 @@
   <title>Digital Integration Office</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
   <style>
-  .snap-up {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-  }
+.snap-up {
+  opacity: 0;
+  transform: translateY(20px) translate3d(0, 0, 0); /* Add translate3d for hardware acceleration */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  will-change: opacity, transform; /* Hint to the browser for performance optimization */
+}
 
-  .snap-up-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.snap-up-visible {
+  opacity: 1;
+  transform: translateY(0) translate3d(0, 0, 0);
+}
   </style>
 </head>
 <body class="bg-gray-100 text-gray-800 overflow-x-hidden">
@@ -217,7 +218,7 @@
               </div>
               <!-- Social Media Links -->
               <div>
-                  <p class="text-lg md:text-xl mb-4 text-white">
+,                  <p class="text-lg md:text-xl mb-4 text-white">
                       <strong>LinkedIn:</strong> 
                       <a href="https://www.linkedin.com/company/digitalintegration" class="text-blue-300 hover:text-blue-400 transition duration-300">Digital Integration Office</a>
                   </p>
@@ -247,6 +248,28 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         });
     });
 });  document.addEventListener("DOMContentLoaded", () => {
+      // Throttle function to limit the rate of function execution
+      function throttle(func, limit) {
+        let lastFunc;
+        let lastRan;
+        return function() {
+          const context = this;
+          const args = arguments;
+          if (!lastRan) {
+            func.apply(context, args);
+            lastRan = Date.now();
+          } else {
+            clearTimeout(lastFunc);
+            lastFunc = setTimeout(function() {
+              if ((Date.now() - lastRan) >= limit) {
+                func.apply(context, args);
+                lastRan = Date.now();
+              }
+            }, limit - (Date.now() - lastRan));
+          }
+        }
+      }
+
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
@@ -256,12 +279,18 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
           }
         });
       }, {
-        threshold: 0.1 // This value can be adjusted
+        threshold: 0.1
       });
 
       const elements = document.querySelectorAll('.snap-up');
       elements.forEach(el => observer.observe(el));
+
+      // Use throttled scroll event to improve performance
+      window.addEventListener('scroll', throttle(() => {
+        // Placeholder for any scroll-based logic
+      }, 100));
     });
+
   </script>
 
 </body>
