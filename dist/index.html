@@ -72,7 +72,10 @@
       handleResize();
     });
   </script>
-  <section id="home" class="bg-gray-900 min-h-screen flex items-center justify-center px-4 md:px-8" style="background-image: url('https://i.imgur.com/EEG8Nvy.jpeg'); background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover;">
+    <section id="home" class="bg-gray-900 min-h-screen flex items-center justify-center px-4 md:px-8" style="background-image: url('https://i.imgur.com/EEG8Nvy.jpeg'); background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover;">
+      <!-- Content here -->
+    </section>
+
     <div class="text-center z-10">
       <h1 class="text-8xl font-extrabold mb-4 text-blue-500 tracking-widest">
         Where <span class="text-cyan-300">Ideas</span> Meet <span class="text-cyan-300">Impact</span>
@@ -248,28 +251,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         });
     });
 });  document.addEventListener("DOMContentLoaded", () => {
-      // Throttle function to limit the rate of function execution
-      function throttle(func, limit) {
-        let lastFunc;
-        let lastRan;
-        return function() {
-          const context = this;
-          const args = arguments;
-          if (!lastRan) {
-            func.apply(context, args);
-            lastRan = Date.now();
-          } else {
-            clearTimeout(lastFunc);
-            lastFunc = setTimeout(function() {
-              if ((Date.now() - lastRan) >= limit) {
-                func.apply(context, args);
-                lastRan = Date.now();
-              }
-            }, limit - (Date.now() - lastRan));
-          }
-        }
-      }
-
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
@@ -279,18 +260,12 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
           }
         });
       }, {
-        threshold: 0.1
+        threshold: 0.1 // This value can be adjusted
       });
 
       const elements = document.querySelectorAll('.snap-up');
       elements.forEach(el => observer.observe(el));
-
-      // Use throttled scroll event to improve performance
-      window.addEventListener('scroll', throttle(() => {
-        // Placeholder for any scroll-based logic
-      }, 100));
     });
-
   </script>
 
 </body>
