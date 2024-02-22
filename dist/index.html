@@ -6,6 +6,94 @@
   <title>Digital Integration Office</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
   <style>
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: orange; }
+}
+
+.typewriter h1 {
+  display: block; /* Each h1 will be a separate line */
+  overflow: hidden;
+  border-right: .15em solid orange; /* The typewriter cursor */
+  white-space: nowrap; /* Keep the text on a single line */
+  margin: auto; /* Center the text */
+  letter-spacing: .15em; /* Adjust the spacing */
+  animation: 
+    typing 3.5s steps(30, end) forwards, /* The typing effect */
+    blink-caret .75s step-end infinite; /* The cursor effect */
+  opacity: 0; /* Start with the text fully transparent */
+  transform: translateY(-50%) scale(1); /* Center vertically */
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+/* Animation delays for each line */
+.typewriter h1:nth-child(1) { 
+  animation-delay: 1s; 
+  animation-duration: 2s; /* Speed up the typing for the shorter lines */
+}
+
+.typewriter h1:nth-child(2) { 
+  animation-delay: 3s; 
+  animation-duration: 2.5s; 
+}
+
+.typewriter h1:nth-child(3) { 
+  animation-delay: 5.5s; 
+  animation-duration: 2s; 
+}
+
+.typewriter h1:nth-child(4) { 
+  animation-delay: 7.5s; 
+  animation-duration: 3s; /* Longer line can have a longer duration */
+}
+
+/* Fade in the lines as they start to type */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.typewriter h1 {
+  animation-name: typing, blink-caret, fadeIn;
+}
+
+/* Ensure each h1 starts off-screen and moves into place */
+    
+.typewriter h1 {
+  position: relative;
+  top: -100vh;
+  animation: fadeIn 0.5s ease-in-out forwards, moveDown 0.5s ease-in-out forwards;
+}
+
+@keyframes moveDown {
+  from { top: -100vh; }
+  to { top: initial; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .typewriter h1 {
+    font-size: 4xl; /* Adjust font size on smaller screens */
+  }
+}
+    .parallax {
+  background-image: url('https://i.imgur.com/EEG8Nvy.jpeg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+    }
+    
 .snap-up {
   opacity: 0;
   transform: translateY(20px) translate3d(0, 0, 0); /* Add translate3d for hardware acceleration */
@@ -72,40 +160,42 @@
       handleResize();
     });
   </script>
-  <section id="home" class="bg-gray-900 min-h-screen flex items-center justify-center px-4 md:px-8" style="background-image: url('https://i.imgur.com/EEG8Nvy.jpeg'); background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover;">
-    <div class="text-center z-10">
-      <h1 class="text-8xl font-extrabold mb-4 text-blue-500 tracking-widest">
-        Where <span class="text-cyan-300">Ideas</span> Meet <span class="text-cyan-300">Impact</span>
-      </h1>
-      <p class="text-xl mb-6 text-white">Empowering innovation and excellence inside your classroom.</p>
-    </div>
-  </section>
-<!-- mission -->  
-        <section id="mission" class="bg-gray-900 min-h-screen flex items-center justify-center p-6">
-            <div class="container mx-auto max-w-5xl">
-                <h2 class="snap-up text-4xl font-semibold text-blue-500 text-center mb-8">Mission</h2>
-                <div class="snap-ugrid md:grid-cols-3 gap-10">
-                    <div class="bg-gray-100 rounded-xl p-6 shadow">
-                        <img src="https://i.imgur.com/vRtl3NB.jpg" alt="Innovation" class="w-20 h-20 mx-auto rounded-full mb-4">
-                        <h3 class="text-2xl font-medium text-gray-800 text-center">Our Why</h3>
-                        <p class="text-center text-gray-600 mt-2">The Digital Integration Office believes in the proficient development of Airmen and firmly conclude that our current systems and processes need transformed. We are dedicated to establishing a new standard of excellence for training within the 82 TRW.</p>
-                    </div>
-                    <div class="snap-up bg-gray-100 rounded-xl p-6 shadow">
-                        <img src="https://i.imgur.com/4hSoEm9.jpg" alt="Expert Team" class="w-20 h-20 mx-auto rounded-full mb-4">
-                        <h3 class="text-2xl font-medium text-gray-800 text-center">How We Do It</h3>
-                        <p class="text-center text-gray-600 mt-2"> 
-  We leverage our alliances with industry and innovative units across the DAF to cultivate a culture of innovation. We set transformation standards, actualize Airmen ideas, accelerate the adoption of emerging technolgy, and stimulate squadron innovation.
-                        </p>
-                    </div>
-                    <div class="snap-up bg-gray-100 rounded-xl p-6 shadow">
-                        <img src="https://i.imgur.com/RpDPe32.jpg" alt="Quality" class="w-20 h-20 mx-auto rounded-full mb-4">
-                        <h3 class="text-2xl font-medium text-gray-800 text-center">What we do</h3>
-                        <p class="text-center text-gray-600 mt-2"> We execute the strategic objectives of the DAF, ADC, and 82 TRW. We serve as a central point for innovation information from the Wing Commander, all the way to the newest instructors, directing our efforts towards an end state that epitomizes modern learning and technology. We ensure that technology, learning delivery, and classroom environments truly transform our approach to developing Airmen, enabling us to deploy more Airmen for the great power competition.</p>
-                    </div>
-                </div>
-            </div>
+  <section id="home" class="bg-gray-900 min-h-screen flex items-center justify-center px-4 md:px-8" style="background-image: url('https://i.imgur.com/EEG8Nvy.jpeg'); background-position: center; background-repeat: no-repeat; background-size: cover;">
+  <div class="typewriter text-center z-10">
+    <h1 class="text-8xl font-extrabold text-blue-500 tracking-widest">Where</h1>
+    <h1 class="text-8xl font-extrabold text-blue-500 tracking-widest">Ideas</h1>
+    <h1 class="text-8xl font-extrabold text-blue-500 tracking-widest">Meet</h1>
+    <h1 class="text-8xl font-extrabold text-purple-500 tracking-widest">Impact</h1>
+  </div>
+</section>
 
-        </section>
+<!-- mission -->  
+        <section id="mission" class="bg-gray-900 min-h-screen flex items-center justify-center p-6 overflow-hidden">
+  <div class="container mx-auto max-w-7xl p-6">
+    <h2 class="snap-up text-5xl font-bold text-blue-500 text-center mb-12">Our Mission</h2>
+    <div class="snap-up grid md:grid-cols-3 gap-10 text-center">
+      <!-- Mission Item 1 -->
+      <div class="bg-gray-100 transform hover:-translate-y-2 transition duration-300 ease-in-out rounded-xl p-6 shadow-lg">
+        <img src="https://i.imgur.com/vRtl3NB.jpg" alt="Innovation" class="w-32 h-32 mx-auto rounded-full mb-4">
+        <h3 class="text-3xl font-semibold text-gray-800">Our Why</h3>
+        <p class="text-gray-600 mt-4">Dedicated to transforming our systems and processes for the development of Airmen, establishing new excellence in training.</p>
+      </div>
+      <!-- Mission Item 2 -->
+      <div class="bg-gray-100 transform hover:-translate-y-2 transition duration-300 ease-in-out rounded-xl p-6 shadow-lg">
+        <img src="https://i.imgur.com/4hSoEm9.jpg" alt="Expert Team" class="w-32 h-32 mx-auto rounded-full mb-4">
+        <h3 class="text-3xl font-semibold text-gray-800">How We Do It</h3>
+        <p class="text-gray-600 mt-4">Leveraging alliances to foster innovation, set standards, actualize ideas, and accelerate technological adoption.</p>
+      </div>
+      <!-- Mission Item 3 -->
+      <div class="bg-gray-100 transform hover:-translate-y-2 transition duration-300 ease-in-out rounded-xl p-6 shadow-lg">
+        <img src="https://i.imgur.com/RpDPe32.jpg" alt="Quality" class="w-32 h-32 mx-auto rounded-full mb-4">
+        <h3 class="text-3xl font-semibold text-gray-800">What We Do</h3>
+        <p class="text-gray-600 mt-4">Executing strategic objectives and serving as a hub for innovation, we transform learning and technology in Airmen's development.</p>
+      </div>
+    </div>
+  </div>
+</section>
+          
   <!-- Team -->
   <section id="team" class="bg-gray-900 py-12">
     <h2 class="snap-up text-4xl font-semibold text-blue-500 text-center mb-8">DIO Team</h2>
@@ -263,6 +353,28 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       const elements = document.querySelectorAll('.snap-up');
       elements.forEach(el => observer.observe(el));
     });
+  // Throttle function to limit the number of times the scroll function can be executed
+  function throttle(fn, wait) {
+    var time = Date.now();
+    return function() {
+      if ((time + wait - Date.now()) < 0) {
+        fn();
+        time = Date.now();
+      }
+    }
+  }
+
+  // Function to apply parallax effect
+  function applyParallax() {
+    var scrolled = window.pageYOffset;
+    var parallax = document.querySelector('.parallax');
+    // Adjust the value here to control the speed of the parallax effect
+    var coords = '50% ' + (scrolled * 0.5) + 'px';
+    parallax.style.backgroundPosition = coords;
+  }
+
+  // Listen for scroll events and apply the parallax function with throttling
+  window.addEventListener('scroll', throttle(applyParallax, 14));
   </script>
 
 </body>
